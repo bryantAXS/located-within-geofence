@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Located Within Geofence Demo</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry"></script>
+        <script type="text/javascript" src="./scripts/maps.google.polygon.containsLatLng.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+
+        <script src="./scripts/jquery.located.within.geofence.js"></script>
+
+        <script>
+          $(function(){
+
+            var $fence1 = $.locatedWithinGeofence({
+              geofence: [
+                [41.976544, -87.650213],
+                [41.911299, -87.625923],
+                [41.910852, -87.649355],
+                [41.939397, -87.688065],
+                [41.975842, -87.689009]
+              ],
+              address: "1928 W Crystal St Unit 2 Chicago IL 60622"
+            });
+
+            $fence1.isWithin(function(status){
+              console.log(status);
+            });
+
+            var $fence2 = $.locatedWithinGeofence({
+              geofence: [
+                [41.932246, -87.683601],
+                [41.918069, -87.665148],
+                [41.896351, -87.647638],
+                [41.891048, -87.647552],
+                [41.890600, -87.687035],
+                [41.894306, -87.696733],
+                [41.910085, -87.696991],
+                [41.910021, -87.711840],
+                [41.931990, -87.712355],
+              ],
+              address: "1928 W Crystal St Unit 2 Chicago IL 60622"
+            });
+
+            $fence2.isWithin(function(status){
+              console.log(status);
+            });
+
+          });
+        </script>
+
+    </head>
+    <body>
+
+        <p>
+          Hello world! This is HTML5 Boilerplate.
+        </p>
+
+    </body>
+</html>

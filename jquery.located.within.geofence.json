@@ -1,0 +1,27 @@
+{
+  "name": "located within geogence",
+  "title": "jQuery Located Within Geofence",
+  "description": "A plugin to detect if a LatLng coordinate is within a specified geofence",
+  "keywords": [ "map", "mapping", "geofence", "geometry" ],
+  "version": "1.0.0",
+  "author": {
+    "name": "Bryant Hughes",
+    "email": "bryant@authenticff.com",
+    "url": "http://authenticff.com/"
+  },
+  "licenses":
+  [
+    {
+      "type": "MIT",
+      "url": "https://github.com/whoever/jquery-whatever/LICENSE"
+    }
+  ],
+  "bugs": "https://github.com/whoever/jquery-whatever/issues",
+  "docs": "https://whoever.github.com/jquery-whatever",
+  "homepage": "https://whoever.github.com/jquery-whatever",
+  "download": "https://whoever.github.com/jquery-whatever",
+  "dependencies":
+  {
+    "jquery": ">1.5"
+  }
+}
