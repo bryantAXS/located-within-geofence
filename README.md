@@ -3,6 +3,8 @@
 The purpose of this plugin is to allow the detection of a human readable address, and to tell whether or not
 the location resides inside a specified geofence.
 
+![Easier to understand with an image](http://cl.ly/image/031n3V462m3y)
+
 ## Installation
 
 Ensure you have jquery and the google maps javascrit library (including the geometry library) included in your page. Then
@@ -42,7 +44,7 @@ $fence.isWithin(function(status){
 });
 ```
 
-## Note
+## Rate Limiting
 
 This plugin utilizese the Google Maps Geocoding service, which does rate limit requests. You can find more information here: https://developers.google.com/maps/documentation/geocoding/#Limits
 
@@ -55,4 +57,8 @@ var $fence = $.locatedWithinGeofence({
   apikey: "dkdjeivcieijfjdkwuvjcdj"
 });
 ```
+
+## Notes
+
+* This class does not require that you actually have a google map created on the page. It works without ever adding or instantating a google map object itself, assuming you don't need it.
 
