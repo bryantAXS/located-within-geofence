@@ -3,7 +3,7 @@
 The purpose of this plugin is to allow the detection of a human readable address, and to tell whether or not
 the location resides inside a specified geofence.
 
-![Easier to understand with an image](http://cl.ly/image/031n3V462m3y)
+![Easier to understand with an image](http://cl.ly/image/031n3V462m3y/Screen%20Shot%202014-08-07%20at%209.34.41%20AM.png)
 
 ## Installation
 
