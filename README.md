@@ -62,3 +62,6 @@ var $fence = $.locatedWithinGeofence({
 
 * This class does not require that you actually have a google map created on the page. It works without ever adding or instantating a google map object itself, assuming you don't need it.
 
+## Acknowledgements
+
+This class utilzes the Contains Lat Lng google maps plugin found here: https://github.com/tparkin/Google-Maps-Point-in-Polygon
