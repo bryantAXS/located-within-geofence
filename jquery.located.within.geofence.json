@@ -16,12 +16,12 @@
       "url": "https://github.com/whoever/jquery-whatever/LICENSE"
     }
   ],
-  "bugs": "https://github.com/whoever/jquery-whatever/issues",
-  "docs": "https://whoever.github.com/jquery-whatever",
-  "homepage": "https://whoever.github.com/jquery-whatever",
-  "download": "https://whoever.github.com/jquery-whatever",
+  "bugs": "https://github.com/bryantAXS/located-within-geofence/issues",
+  "docs": "https://github.com/bryantAXS/located-within-geofence",
+  "homepage": "https://github.com/bryantAXS/located-within-geofence",
+  "download": "https://github.com/bryantAXS/located-within-geofence",
   "dependencies":
   {
-    "jquery": ">1.5"
+    "jquery": ">1.8"
   }
 }

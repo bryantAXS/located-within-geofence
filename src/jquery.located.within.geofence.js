@@ -12,7 +12,8 @@
       document = window.document,
       defaults = {
         address: "",
-        geofence: []
+        geofence: [],
+        apikey: ""
       };
 
   // The actual plugin constructor
@@ -69,14 +70,20 @@
 
     this.address = address !== undefined ? address : this.options.address;
 
+    var params = {
+      address: this.address
+    };
+
+    if(this.options.apikey.length){
+      params.key = this.options.apikey;
+    }
+
     this.$addressLoaded = $.ajax({
 
       url: 'https://maps.googleapis.com/maps/api/geocode/json',
       type: 'GET',
       dataType: 'json',
-      data: {
-        address: this.address
-      },
+      data: params,
 
       success: function(data) {
 

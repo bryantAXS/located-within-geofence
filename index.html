@@ -8,57 +8,140 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry"></script>
-        <script type="text/javascript" src="./scripts/maps.google.polygon.containsLatLng.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 
-        <script src="./scripts/jquery.located.within.geofence.js"></script>
+        <script type="text/javascript" src="./src/maps.google.polygon.containsLatLng.js"></script>
+        <script src="./src/jquery.located.within.geofence.js"></script>
 
         <script>
+
           $(function(){
 
-            var $fence1 = $.locatedWithinGeofence({
-              geofence: [
-                [41.976544, -87.650213],
-                [41.911299, -87.625923],
-                [41.910852, -87.649355],
-                [41.939397, -87.688065],
-                [41.975842, -87.689009]
-              ],
-              address: "1928 W Crystal St Unit 2 Chicago IL 60622"
-            });
+            // setting some initial variables: map options, coordinates of our two fences
 
-            $fence1.isWithin(function(status){
-              console.log(status);
-            });
+            var mapOptions = { zoom: 12, center: new google.maps.LatLng(41.900548, -87.676048) },
 
-            var $fence2 = $.locatedWithinGeofence({
-              geofence: [
-                [41.932246, -87.683601],
-                [41.918069, -87.665148],
-                [41.896351, -87.647638],
-                [41.891048, -87.647552],
-                [41.890600, -87.687035],
-                [41.894306, -87.696733],
-                [41.910085, -87.696991],
-                [41.910021, -87.711840],
-                [41.931990, -87.712355],
-              ],
-              address: "1928 W Crystal St Unit 2 Chicago IL 60622"
-            });
+            fence1Coords = [
+              [41.976544, -87.650213],
+              [41.911299, -87.625923],
+              [41.910852, -87.649355],
+              [41.939397, -87.688065],
+              [41.975842, -87.689009]
+            ],
 
-            $fence2.isWithin(function(status){
-              console.log(status);
+            fence2Coords = [
+              [41.932246, -87.683601],
+              [41.918069, -87.665148],
+              [41.896351, -87.647638],
+              [41.891048, -87.647552],
+              [41.890600, -87.687035],
+              [41.894306, -87.696733],
+              [41.910085, -87.696991],
+              [41.910021, -87.711840],
+              [41.931990, -87.712355],
+            ];
+
+            // create google map
+
+            map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+            // adding our fences to the map
+
+            fense1Polygon = new google.maps.Polygon({
+              paths: $.map(fence1Coords, function(coord){
+                return new google.maps.LatLng(coord[0], coord[1]);
+              }),
+              strokeColor: '#FF0000',
+              strokeOpacity: 0.8,
+              strokeWeight: 2,
+              fillColor: '#FF0000',
+              fillOpacity: 0.35
+            }).setMap(map);
+
+            fense2Polygon = new google.maps.Polygon({
+              paths: $.map(fence2Coords, function(coord){
+                return new google.maps.LatLng(coord[0], coord[1]);
+              }),
+              strokeColor: '#FF0000',
+              strokeOpacity: 0.8,
+              strokeWeight: 2,
+              fillColor: '#FF0000',
+              fillOpacity: 0.35
+            }).setMap(map);
+
+            // click event for our form
+
+            $("button").click(function(){
+
+              var address = $("input").val();
+
+              // creating our located within classes
+
+              var $fence1 = $.locatedWithinGeofence({
+                geofence: fence1Coords,
+                address: address
+              });
+
+              var $fence2 = $.locatedWithinGeofence({
+                geofence: fence2Coords,
+                address: address
+              });
+
+              // testing if they are within
+
+              $fence1.isWithin(function(status){
+                $("p.fence1 span").html(String(status));
+              });
+
+              $fence2.isWithin(function(status){
+                $("p.fence2 span").html(String(status));
+              });
+
             });
 
           });
         </script>
 
+        <style>
+
+          #map-container{
+            height:80%;
+            position:fixed;
+            width:100%;
+          }
+
+          #map{
+            height:100%;
+            width:100%;
+          }
+
+          #content{
+            height:20%;
+            padding:20px;
+            position:fixed;
+            top:80%;
+            width:100%;
+          }
+
+        </style>
+
     </head>
     <body>
 
-        <p>
-          Hello world! This is HTML5 Boilerplate.
-        </p>
+        <div id="map-container">
+          <div id='map'></div>
+        </div>
+
+        <div id='content'>
+          <input type="text" name="address" />
+          <button id='submit'>Submit Address</button>
+          <p class="fence1">
+            Address is located within fence 1: <span></span>
+          </p>
+          <p class="fence2">
+            Address is located within fence 2: <span></span>
+          </p>
+        </div>
 
     </body>
 </html>
